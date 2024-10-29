@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qt/models/db_helper.dart';
+import 'package:qt/pages/description_page.dart';
 import 'package:qt/pages/registration_page.dart';
 import 'package:qt/widgets/main_button.dart';
 import 'package:qt/widgets/small_button.dart';
@@ -27,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
     bool isAuthenticated = await _dbHelper.isUserAuthenticated(email, password);
     if (isAuthenticated) {
       // ignore: use_build_context_synchronously
-      // Navigator.of(context).pushNamed(MenuPage.routeName);
+      Navigator.of(context).pushNamed(DescriptionPage.routeName);
     } else {
       if (kDebugMode) {
         print('Login failed');
@@ -46,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
-                height: 300,
+                height: 250,
               ),
               const Center(
                 child: Text(
@@ -58,12 +59,32 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 34),
                               ),
               ),
-              const SizedBox(height: 70),
+              const SizedBox(height: 20),
+              const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                    'Телефон',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
+                  ),
               TextFieldWidget(
                   controller: _emailController,
                   hintText: '+7(___)___-__-__',
                   ),
               const SizedBox(height: 20),
+              const Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                    'Пароль',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
+                  ),
               TextFieldWidget(
                 controller: _passwordController,
                 hintText: 'Пароль',

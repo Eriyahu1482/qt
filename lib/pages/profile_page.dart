@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:qt/pages/choose_page.dart';
-import 'package:qt/widgets/small_main_button_widget.dart';
-import 'profile_page.dart'; // Импортируй нужные страницы
+import 'package:qt/pages/description_page.dart';
+import 'package:qt/pages/login_page.dart';
+import 'package:qt/widgets/main_button.dart';
 
-class DescriptionPage extends StatefulWidget {
-  static const routeName = '/description-page';
-  const DescriptionPage({super.key});
+class ProfilePage extends StatefulWidget {
+  static const routeName = '/profile-page';
+  const ProfilePage({super.key});
 
   @override
-  _DescriptionPageState createState() => _DescriptionPageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _DescriptionPageState extends State<DescriptionPage> {
-  int _selectedIndex = 0;
+class _ProfilePageState extends State<ProfilePage> {
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     if (index == _selectedIndex) return; // Не делаем ничего, если нажата текущая иконка
@@ -28,9 +29,6 @@ class _DescriptionPageState extends State<DescriptionPage> {
         break;
       case 1:
         Navigator.pushReplacementNamed(context, ChoosePage.routeName);
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, ProfilePage.routeName);
         break;
     }
   }
@@ -62,17 +60,23 @@ class _DescriptionPageState extends State<DescriptionPage> {
         height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-          image: AssetImage('assets/background.png'),
-          fit: BoxFit.cover,
+            image: AssetImage('assets/background.png'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Center(
+            const SizedBox(height: 170),
+            Center(
+              child: Image.asset('assets/pupil.png'),
+            ),
+            const SizedBox(height: 10),
+            const Center(
+              child: SizedBox(
+                width: 300,
                 child: Text(
-                  'Курс "Программирование с помощью фреймворка Qt"',
+                  'Петрова Ангелина Максимовна',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(53, 73, 142, 1),
@@ -81,67 +85,75 @@ class _DescriptionPageState extends State<DescriptionPage> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'Qt - кроссплатформенный фреймворк для создания графических приложений для десктопа, мобильных и встроенных устройств.',
-                style: TextStyle(
-                  color: Color.fromRGBO(69, 86, 186, 1),
-                  fontSize: 20,
+            const Row(
+              children: [
+                SizedBox(width: 70),
+                Text(
+                  'Телефон:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(53, 73, 142, 1),
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 235),
-              child: Text(
-                'Цель курса',
-                style: TextStyle(
-                  color: Color.fromRGBO(53, 73, 142, 1),
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold,
+                SizedBox(width: 5),
+                Text(
+                  '8(923)456-78-91',
+                  style: TextStyle(
+                    color: Color.fromRGBO(69, 86, 186, 1),
+                    fontSize: 20,
+                  ),
                 ),
-              ),
+              ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'Наша цель - научить вам пользоваться данным фреймворком. За время прохождения курса вы познаете все его тонкости и сделаете свои первые работы для портфолио!',
-                style: TextStyle(
-                  color: Color.fromRGBO(69, 86, 186, 1),
-                  fontSize: 16,
+            const Row(
+              children: [
+                SizedBox(width: 120),
+                Text(
+                  'Возраст:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(53, 73, 142, 1),
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(right: 235),
-              child: Text(
-                'Как начать?',
-                style: TextStyle(
-                  color: Color.fromRGBO(53, 73, 142, 1),
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold,
+                SizedBox(width: 5),
+                Text(
+                  '16 лет',
+                  style: TextStyle(
+                    color: Color.fromRGBO(69, 86, 186, 1),
+                    fontSize: 20,
+                  ),
                 ),
-              ),
+              ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'Чтобы начать прохождение данного курса, вам нужно перейти на вкладку курса, выбрать наставника и в скором времени вам позвонит наставник, чтобы договориться о дате и времени занятия. Ученик и преподаватель самостоятельно договариваются о том, как будут проходить уроки.',
-                style: TextStyle(
-                  color: Color.fromRGBO(69, 86, 186, 1),
-                  fontSize: 16,
+            const Row(
+              children: [
+                SizedBox(width: 60),
+                Text(
+                  'E-mail:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(53, 73, 142, 1),
+                    fontSize: 20,
+                  ),
                 ),
-              ),
+                SizedBox(width: 5),
+                Text(
+                  'angelinka@gmail.com',
+                  style: TextStyle(
+                    color: Color.fromRGBO(69, 86, 186, 1),
+                    fontSize: 20,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 5),
-            Padding(
-              padding: const EdgeInsets.only(right: 190),
-              child: SmallMainButtonWidget(
-                buttonName: 'Перейти к курсу',
-                onTap: () {
-                  Navigator.of(context).pushNamed(ChoosePage.routeName);
-                },
-              ),
+            const SizedBox(height: 30),
+            MainButtonWidget(
+              buttonName: 'Выйти из аккаунта',
+              onTap: () {
+                Navigator.of(context).pushNamed(LoginPage.routeName);
+              },
             ),
           ],
         ),
@@ -181,8 +193,8 @@ class _DescriptionPageState extends State<DescriptionPage> {
                         scale: _selectedIndex == i ? 1.3 : 1.0,
                         duration: const Duration(milliseconds: 200),
                         child: Image.asset(
-                          _selectedIndex == i 
-                              ? '${i == 0 ? 'assets/home_selected.png' : i == 1 ? 'assets/course_selected.png' : 'assets/profile_selected.png'}' 
+                          _selectedIndex == i
+                              ? '${i == 0 ? 'assets/home_selected.png' : i == 1 ? 'assets/course_selected.png' : 'assets/profile_selected.png'}'
                               : '${i == 0 ? 'assets/home.png' : i == 1 ? 'assets/course.png' : 'assets/profile.png'}',
                           width: 30,
                           height: 30,
@@ -196,8 +208,9 @@ class _DescriptionPageState extends State<DescriptionPage> {
             ),
         ],
       ),
-  );
+    );
   }
+
   BottomNavigationBarItem _buildBottomNavigationBarItem(int index, String defaultIcon, String selectedIcon) {
     return BottomNavigationBarItem(
       icon: Image.asset(

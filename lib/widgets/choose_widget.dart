@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class ChooseWidget extends StatelessWidget {
+class ChooseWidgetButton extends StatelessWidget {
   final String buttonName;
   final void Function()? onTap;
 
-  const ChooseWidget({Key? key,  
+  const ChooseWidgetButton({Key? key,  
    required this.buttonName,
    required this.onTap,
   }) : super(key: key);

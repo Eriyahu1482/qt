@@ -3,6 +3,7 @@ import 'package:qt/models/db_helper.dart';
 import 'package:qt/models/user_model.dart';
 import 'package:qt/pages/login_page.dart';
 import 'package:qt/widgets/main_button.dart';
+import 'package:qt/widgets/registration_button_widget.dart';
 import 'package:qt/widgets/small_button.dart';
 import 'package:qt/widgets/text_field.dart';
 
@@ -52,7 +53,7 @@ LoginPage.routeName,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               const Center(
                 child: Text(
@@ -75,42 +76,100 @@ LoginPage.routeName,
                 ),
               ),
               const SizedBox(height: 10),
+              Row(
+                children: [
+                const SizedBox(width: 20,),
+                RegistrationButtonWidget(buttonName: 'Ученик', onTap: (){}, buttonRadiusRight: 0, buttonRadiusLeft: 12, buttonColor1: 69, buttonColor2: 86, buttonColor3: 186, buttonColor4: 1, buttonTextColor1: 255, buttonTextColor2: 255, buttonTextColor3: 255, buttonTextColor4: 1,),
+                RegistrationButtonWidget(buttonName: 'Учитель', onTap: (){}, buttonRadiusRight: 12, buttonRadiusLeft: 0, buttonColor1: 255, buttonColor2: 255, buttonColor3: 255, buttonColor4: 1, buttonTextColor1: 69, buttonTextColor2: 86, buttonTextColor3: 186, buttonTextColor4: 1,),
+                ],
+              ),
+              const SizedBox(height: 10),
               Column(
                 children: <Widget>[
-                  const SizedBox(height: 2),
+                  const SizedBox(height: 10),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 190),
+                    child: Text(
+                    'Имя, Фамилия',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
+                  ),
                   TextFieldWidget(
                     controller: _nicknameController,
                     hintText: 'Имя, фамилия',),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 250),
+                    child: Text(
+                    'Телефон',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
                   ),
                   TextFieldWidget(
                     controller: _phoneController, 
                     hintText: '+7(___)___-__-__'
                     ),
                     const SizedBox(
-                    height: 20,
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 270),
+                    child: Text(
+                    'E-mail',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
                   ),
                   TextFieldWidget(
                     controller: _emailController,
                     hintText: 'vanovivan@gmail.com',
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 250),
+                    child: Text(
+                    'Возраст',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
                   ),
                   TextFieldWidget(
-                    controller: _emailController,
+                    controller: _ageController,
                     hintText: 'Полных лет',
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 250),
+                    child: Text(
+                    'Пароль',
+                    style: TextStyle(
+                      color: Color.fromRGBO(69, 86, 186, 1),
+                      fontSize: 20,
+                    ),
+                   ),
                   ),
                   TextFieldWidget(
                     controller: _passwordController,
                     hintText: 'Пароль',
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 20,
                   ),
                   MainButtonWidget(
                     buttonName: 'ЗАРЕГЕСТРИРОВАТЬСЯ',
