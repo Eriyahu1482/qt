@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:qt/pages/choose_page.dart';
+import 'package:qt/pages/pupil/choose_page.dart';
+import 'package:qt/pages/teacher/chose_teacher_page.dart';
+import 'package:qt/pages/teacher/teacher_profile_page.dart';
 import 'package:qt/widgets/small_main_button_widget.dart';
-import 'profile_page.dart'; // Импортируй нужные страницы
 
-class DescriptionPage extends StatefulWidget {
-  static const routeName = '/description-page';
-  const DescriptionPage({super.key});
+class DescriptionTeacherPage extends StatefulWidget {
+  static const routeName = '/descriptionteacher-page';
+  const DescriptionTeacherPage({super.key});
 
   @override
-  _DescriptionPageState createState() => _DescriptionPageState();
+  _DescriptionTeacherPageState createState() => _DescriptionTeacherPageState();
 }
 
-class _DescriptionPageState extends State<DescriptionPage> {
+class _DescriptionTeacherPageState extends State<DescriptionTeacherPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -24,13 +25,12 @@ class _DescriptionPageState extends State<DescriptionPage> {
     // Навигация к соответствующим страницам
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, DescriptionPage.routeName);
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, ChoosePage.routeName);
+        Navigator.pushReplacementNamed(context, ChooseTeacherPage.routeName);
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, ProfilePage.routeName);
+        Navigator.pushReplacementNamed(context, ProfileTeacherPage.routeName);
         break;
     }
   }

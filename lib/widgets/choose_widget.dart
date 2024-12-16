@@ -5,9 +5,10 @@ class ChooseWidgetButton extends StatelessWidget {
   final String buttonName;
   final void Function()? onTap;
 
-  const ChooseWidgetButton({Key? key,  
-   required this.buttonName,
-   required this.onTap,
+  const ChooseWidgetButton({
+    Key? key,
+    required this.buttonName,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -17,28 +18,42 @@ class ChooseWidgetButton extends StatelessWidget {
       child: Container(
         width: 260,
         height: 55,
-          decoration: BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment(1, 1),
             colors: <Color>[
               Color.fromRGBO(255, 255, 255, 1),
-              Color.fromRGBO(106, 122, 212, 1), Color.fromRGBO(106, 122, 212, 1), Color.fromRGBO(106, 122, 212, 1),
+              Color.fromRGBO(106, 122, 212, 1),
+              Color.fromRGBO(106, 122, 212, 1),
+              Color.fromRGBO(106, 122, 212, 1),
               Color.fromRGBO(255, 255, 255, 1),
-            ],),),
-        child: Row(
-         mainAxisAlignment: MainAxisAlignment.center,
-         children: [
-         Text (buttonName,
-          textAlign: TextAlign.right,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 15,
-            fontWeight:FontWeight.bold
-          ),)
-            ]
+            ],
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1), // Цвет тени
+              offset: const Offset(0, 7), // Смещение тени по оси Y
+              blurRadius: 6, // Радиус размытия тени
+              spreadRadius: 2, // Радиус растяжения тени
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              buttonName,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

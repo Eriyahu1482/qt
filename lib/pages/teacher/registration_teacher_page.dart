@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:qt/models/db_helper.dart';
 import 'package:qt/models/user_model.dart';
-import 'package:qt/pages/login_page.dart';
+import 'package:qt/pages/teacher/login_teacher_page.dart';
+import 'package:qt/pages/pupil/registration_page.dart';
 import 'package:qt/widgets/main_button.dart';
 import 'package:qt/widgets/registration_button_widget.dart';
 import 'package:qt/widgets/small_button.dart';
 import 'package:qt/widgets/text_field.dart';
 
-class RegistrationPage extends StatefulWidget {
-  static const routeName = '/registration-page';
-  const RegistrationPage({super.key});
+class RegistrationTeacherPage extends StatefulWidget {
+  static const routeName = '/registrationteacher-page';
+  const RegistrationTeacherPage({super.key});
 
   @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
+  State<RegistrationTeacherPage> createState() => _RegistrationTeacherPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _RegistrationTeacherPageState extends State<RegistrationTeacherPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nicknameController = TextEditingController();
@@ -36,7 +37,7 @@ print('registrarion failed');
 UserModel user = UserModel(email: email, password: password);
 await _dbHelper.insertUser(user);
 Navigator.of(context).pushNamedAndRemoveUntil(
-LoginPage.routeName,
+LoginTeacherPage.routeName,
 (Route<dynamic> route) => false,
 );
 }
@@ -79,8 +80,10 @@ LoginPage.routeName,
               Row(
                 children: [
                 const SizedBox(width: 20,),
-                RegistrationButtonWidget(buttonName: 'Ученик', onTap: (){}, buttonRadiusRight: 0, buttonRadiusLeft: 12, buttonColor1: 69, buttonColor2: 86, buttonColor3: 186, buttonColor4: 1, buttonTextColor1: 255, buttonTextColor2: 255, buttonTextColor3: 255, buttonTextColor4: 1,),
-                RegistrationButtonWidget(buttonName: 'Учитель', onTap: (){}, buttonRadiusRight: 12, buttonRadiusLeft: 0, buttonColor1: 255, buttonColor2: 255, buttonColor3: 255, buttonColor4: 1, buttonTextColor1: 69, buttonTextColor2: 86, buttonTextColor3: 186, buttonTextColor4: 1,),
+                RegistrationButtonWidget(buttonName: 'Ученик', onTap: (){
+                  Navigator.of(context).pushNamed(RegistrationPage.routeName);
+                }, buttonRadiusRight: 0, buttonRadiusLeft: 12, buttonColor1: 255, buttonColor2: 255, buttonColor3: 255, buttonColor4: 1, buttonTextColor1: 69, buttonTextColor2: 86, buttonTextColor3: 186, buttonTextColor4: 1,),
+                RegistrationButtonWidget(buttonName: 'Учитель', onTap: (){}, buttonRadiusRight: 12, buttonRadiusLeft: 0, buttonColor1: 69, buttonColor2: 86, buttonColor3: 186, buttonColor4: 1, buttonTextColor1: 255, buttonTextColor2: 255, buttonTextColor3: 255, buttonTextColor4: 1,),
                 ],
               ),
               const SizedBox(height: 10),
@@ -88,9 +91,9 @@ LoginPage.routeName,
                 children: <Widget>[
                   const SizedBox(height: 10),
                   const Padding(
-                    padding: EdgeInsets.only(right: 190),
+                    padding: EdgeInsets.only(right: 280),
                     child: Text(
-                    'Имя, Фамилия',
+                    'ФИО',
                     style: TextStyle(
                       color: Color.fromRGBO(69, 86, 186, 1),
                       fontSize: 20,
@@ -99,7 +102,7 @@ LoginPage.routeName,
                   ),
                   TextFieldWidget(
                     controller: _nicknameController,
-                    hintText: 'Имя, фамилия',),
+                    hintText: 'ФИО',),
                   const SizedBox(
                     height: 10,
                   ),
@@ -138,9 +141,9 @@ LoginPage.routeName,
                     height: 10,
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(right: 250),
+                    padding: EdgeInsets.only(right: 200),
                     child: Text(
-                    'Возраст',
+                    'Стаж работы',
                     style: TextStyle(
                       color: Color.fromRGBO(69, 86, 186, 1),
                       fontSize: 20,
@@ -149,7 +152,7 @@ LoginPage.routeName,
                   ),
                   TextFieldWidget(
                     controller: _ageController,
-                    hintText: 'Полных лет',
+                    hintText: '0 лет',
                   ),
                   const SizedBox(
                     height: 10,
@@ -192,7 +195,7 @@ LoginPage.routeName,
                       buttonName: 'Войти',
                       buttonColor: Colors.transparent,
                       onTap: () {
-                        Navigator.of(context).pushNamed(LoginPage.routeName);
+                        Navigator.of(context).pushNamed(LoginTeacherPage.routeName);
                       },
                     ),
                   ),

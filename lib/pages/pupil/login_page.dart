@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qt/models/db_helper.dart';
-import 'package:qt/pages/description_page.dart';
-import 'package:qt/pages/registration_page.dart';
+import 'package:qt/pages/pupil/description_page.dart';
+import 'package:qt/pages/pupil/registration_page.dart';
 import 'package:qt/widgets/main_button.dart';
 import 'package:qt/widgets/small_button.dart';
 import 'package:qt/widgets/text_field.dart';

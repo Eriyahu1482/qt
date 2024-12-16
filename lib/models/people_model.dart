@@ -16,3 +16,12 @@ final List<People> teacherMiniData =[
 People(peopleName: 'Фролов Н. И.', peopleUrl: 'assets/teacher1.png'),
 People(peopleName: 'Игнатова М.А', peopleUrl: 'assets/teacher2.png')
 ];
+
+final List<People> pupilData =[
+People(peopleName: 'Фролов Николай Иванович', peopleUrl: 'assets/teacher1.png', peopleYears: 12, peopleEmail: 'nikolay@gmail.com')
+];
+
+final List<People> pupilMiniData =[
+People(peopleName: 'Фролов Н. И.', peopleUrl: 'assets/teacher1.png'),
+People(peopleName: 'Игнатова М.А', peopleUrl: 'assets/teacher2.png')
+];

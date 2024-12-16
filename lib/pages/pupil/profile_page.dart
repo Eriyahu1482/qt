@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:qt/pages/teachers_page.dart';
-import 'package:qt/widgets/choose_widget.dart';
-import 'description_page.dart'; // Импортируем необходимые страницы
-import 'profile_page.dart';
+import 'package:qt/pages/pupil/choose_page.dart';
+import 'package:qt/pages/pupil/description_page.dart';
+import 'package:qt/pages/pupil/login_page.dart';
+import 'package:qt/widgets/main_button.dart';
 
-class ChoosePage extends StatefulWidget {
-  static const routeName = '/choose-page';
-  const ChoosePage({super.key});
+class ProfilePage extends StatefulWidget {
+  static const routeName = '/profile-page';
+  const ProfilePage({super.key});
 
   @override
-  _ChoosePageState createState() => _ChoosePageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ChoosePageState extends State<ChoosePage> {
-  int _selectedIndex = 1;
+class _ProfilePageState extends State<ProfilePage> {
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     if (index == _selectedIndex) return; // Не делаем ничего, если нажата текущая иконка
@@ -28,10 +28,7 @@ class _ChoosePageState extends State<ChoosePage> {
         Navigator.pushReplacementNamed(context, DescriptionPage.routeName);
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, ChoosePage.routeName); // Если вы хотите оставить на этой странице
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, ProfilePage.routeName);
+        Navigator.pushReplacementNamed(context, ChoosePage.routeName);
         break;
     }
   }
@@ -63,53 +60,101 @@ class _ChoosePageState extends State<ChoosePage> {
         height: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
-          image: AssetImage('assets/background.png'),
-          fit: BoxFit.cover,
+            image: AssetImage('assets/background.png'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(
           children: [
             const SizedBox(height: 170),
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Center(
+            Center(
+              child: Image.asset('assets/pupil.png'),
+            ),
+            const SizedBox(height: 10),
+            const Center(
+              child: SizedBox(
+                width: 300,
                 child: Text(
-                  'Прогресс прохождения курса',
+                  'Петрова Ангелина Максимовна',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromRGBO(53, 73, 142, 1),
-                    fontSize: 27,
+                    fontSize: 25,
                   ),
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'На данный момент у вас действующих учеников, чтобы отслеживать прогресс курса.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color.fromRGBO(69, 86, 186, 1),
-                  fontSize: 20,
+            const SizedBox(height: 30),
+            const Row(
+              children: [
+                SizedBox(width: 70),
+                Text(
+                  'Телефон:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(53, 73, 142, 1),
+                    fontSize: 20,
+                  ),
                 ),
-              ),
+                SizedBox(width: 5),
+                Text(
+                  '8(923)456-78-91',
+                  style: TextStyle(
+                    color: Color.fromRGBO(69, 86, 186, 1),
+                    fontSize: 20,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-            Center(
-              child: ChooseWidgetButton(
-                buttonName: 'Выбрать наставника',
-                onTap: () {
-                  Navigator.of(context).pushNamed(TeacherPage.routeName);
-                },
-              ),
+            const Row(
+              children: [
+                SizedBox(width: 120),
+                Text(
+                  'Возраст:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(53, 73, 142, 1),
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(width: 5),
+                Text(
+                  '16 лет',
+                  style: TextStyle(
+                    color: Color.fromRGBO(69, 86, 186, 1),
+                    fontSize: 20,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-            Center(
-              child: ChooseWidgetButton(
-                buttonName: 'Код-приглашение',
-                onTap: () {},
-              ),
+            const Row(
+              children: [
+                SizedBox(width: 60),
+                Text(
+                  'E-mail:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(53, 73, 142, 1),
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(width: 5),
+                Text(
+                  'angelinka@gmail.com',
+                  style: TextStyle(
+                    color: Color.fromRGBO(69, 86, 186, 1),
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+            MainButtonWidget(
+              buttonName: 'Выйти из аккаунта',
+              onTap: () {
+                Navigator.of(context).pushNamed(LoginPage.routeName);
+              },
             ),
           ],
         ),
@@ -149,8 +194,8 @@ class _ChoosePageState extends State<ChoosePage> {
                         scale: _selectedIndex == i ? 1.3 : 1.0,
                         duration: const Duration(milliseconds: 200),
                         child: Image.asset(
-                          _selectedIndex == i 
-                              ? '${i == 0 ? 'assets/home_selected.png' : i == 1 ? 'assets/course_selected.png' : 'assets/profile_selected.png'}' 
+                          _selectedIndex == i
+                              ? '${i == 0 ? 'assets/home_selected.png' : i == 1 ? 'assets/course_selected.png' : 'assets/profile_selected.png'}'
                               : '${i == 0 ? 'assets/home.png' : i == 1 ? 'assets/course.png' : 'assets/profile.png'}',
                           width: 30,
                           height: 30,
@@ -169,16 +214,12 @@ class _ChoosePageState extends State<ChoosePage> {
 
   BottomNavigationBarItem _buildBottomNavigationBarItem(int index, String defaultIcon, String selectedIcon) {
     return BottomNavigationBarItem(
-      icon: _buildImageIcon(_selectedIndex == index ? selectedIcon : defaultIcon),
+      icon: Image.asset(
+        _selectedIndex == index ? selectedIcon : defaultIcon,
+        width: 24,
+        height: 24,
+      ),
       label: '', // Убираем текст
-    );
-  }
-
-  Widget _buildImageIcon(String path) {
-    return Image.asset(
-      path,
-      width: 24,
-      height: 24,
     );
   }
 }

@@ -23,8 +23,11 @@ class RegistrationButtonWidget extends StatelessWidget {
     required this.buttonColor1,
     required this.buttonColor2,
     required this.buttonColor3,
-    required this.buttonColor4, 
-    required this.buttonTextColor1, required this.buttonTextColor2, required this.buttonTextColor3, required this.buttonTextColor4,
+    required this.buttonColor4,
+    required this.buttonTextColor1,
+    required this.buttonTextColor2,
+    required this.buttonTextColor3,
+    required this.buttonTextColor4,
   });
 
   @override
@@ -65,7 +68,7 @@ class RegistrationButtonWidget extends StatelessWidget {
               buttonName,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color.fromRGBO(buttonTextColor2, buttonTextColor2, buttonTextColor3, buttonTextColor4),
+                color: Color.fromRGBO(buttonTextColor1, buttonTextColor2, buttonTextColor3, buttonTextColor4),
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),
